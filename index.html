@@ -1,0 +1,3213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="A. Modern Day Cricket Academy – Professional Cricket Coaching, Practice Nets, Indoor Tape Ball in Karachi. Join Morning & Evening sessions with Patron-in-Chief Younis Khan." />
+  <meta name="keywords"
+    content="cricket academy karachi, younis khan cricket, cricket coaching, practice nets, indoor tape ball, modern day cricket academy" />
+  <meta name="author" content="A. Modern Day Cricket Academy" />
+  <title>A. Modern Day Cricket Academy | Professional Cricket Coaching Karachi</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* ============================================================
+       CSS RESET & ROOT VARIABLES
+    ============================================================ */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --navy: #0d1b2a;
+      --navy-mid: #142338;
+      --navy-light: #1e3353;
+      --gold: #f5c518;
+      --gold-light: #ffd84d;
+      --gold-dark: #c9a200;
+      --white: #ffffff;
+      --off-white: #eef2f7;
+      --gray: #8a9bb0;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --shadow-gold: 0 0 30px rgba(245, 197, 24, 0.35);
+      --shadow-card: 0 20px 60px rgba(0, 0, 0, 0.4);
+      --radius: 16px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ============================================================
+       LOADING SCREEN
+    ============================================================ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--navy);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-ball {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff6 0%, #fff0 40%), var(--gold);
+      box-shadow: var(--shadow-gold), inset 0 0 20px rgba(0, 0, 0, 0.15);
+      animation: spinBall 1s linear infinite, bounceBall 0.8s ease-in-out infinite alternate;
+      position: relative;
+    }
+
+    .loader-ball::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .loader-text {
+      margin-top: 28px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--gold);
+      animation: pulse 1.2s ease infinite;
+    }
+
+    @keyframes spinBall {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes bounceBall {
+      from {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      to {
+        transform: translateY(-30px) rotate(180deg);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    /* ============================================================
+       SCROLLBAR
+    ============================================================ */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--navy-mid);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 3px;
+    }
+
+    /* ============================================================
+       UTILITY
+    ============================================================ */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 6px 20px;
+      background: rgba(245, 197, 24, 0.12);
+      border: 1px solid var(--gold);
+      border-radius: 40px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--white);
+    }
+
+    .section-title span {
+      color: var(--gold);
+    }
+
+    .section-desc {
+      color: var(--gray);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 620px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.12);
+      transform: translateX(-100%);
+      transition: transform 0.35s ease;
+    }
+
+    .btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: var(--navy);
+      box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.5);
+      animation: btnGlow 2.5s ease infinite;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-green {
+      background: linear-gradient(135deg, #25d366 0%, #128c3e 100%);
+      color: var(--white);
+    }
+
+    @keyframes btnGlow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(245, 197, 24, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 0 30px 8px rgba(245, 197, 24, 0.3);
+      }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ============================================================
+       NAVBAR
+    ============================================================ */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(13, 27, 42, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(245, 197, 24, 0.1);
+      transition: background var(--transition), box-shadow var(--transition);
+    }
+
+    #navbar.scrolled {
+      background: rgba(13, 27, 42, 0.97);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 58px;
+      width: auto;
+      filter: drop-shadow(0 0 10px rgba(245, 197, 24, 0.4));
+      transition: transform var(--transition);
+    }
+
+    .nav-logo:hover img {
+      transform: scale(1.06) rotate(-2deg);
+    }
+
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-logo-text .top {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .nav-logo-text .bot {
+      font-size: 0.7rem;
+      color: var(--gray);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      color: var(--off-white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 8px 14px;
+      border-radius: 8px;
+      position: relative;
+      transition: color var(--transition);
+    }
+
+    .nav-menu a::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 50%;
+      right: 50%;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: left var(--transition), right var(--transition);
+    }
+
+    .nav-menu a:hover {
+      color: var(--gold);
+    }
+
+    .nav-menu a:hover::after {
+      left: 14px;
+      right: 14px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .nav-actions a {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .nav-call {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .nav-call:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .nav-wa {
+      background: #25d366;
+      color: #fff;
+    }
+
+    .nav-wa:hover {
+      background: #1dba58;
+      transform: translateY(-2px);
+    }
+
+    .nav-social {
+      color: var(--gray);
+      font-size: 1.1rem;
+      padding: 8px !important;
+    }
+
+    .nav-social:hover {
+      color: var(--gold) !important;
+      transform: scale(1.2);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(13, 27, 42, 0.98);
+      padding: 20px 24px 28px;
+      border-top: 1px solid rgba(245, 197, 24, 0.1);
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      color: var(--off-white);
+      text-decoration: none;
+      padding: 14px 0;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: color var(--transition);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--gold);
+      padding-left: 8px;
+    }
+
+    .mobile-menu .mob-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================================
+       HERO SECTION
+    ============================================================ */
+    #home {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: var(--navy);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 70% at 60% 50%, rgba(245, 197, 24, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(14, 52, 90, 0.8) 0%, transparent 60%),
+        linear-gradient(135deg, #0d1b2a 0%, #142338 50%, #0d1b2a 100%);
+    }
+
+    /* Cricket field lines */
+    .hero-field {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      opacity: 0.04;
+    }
+
+    .hero-field::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 80px solid var(--gold);
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-field::after {
+      content: '';
+      position: absolute;
+      width: 900px;
+      height: 900px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      top: 50%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Animated particles */
+    .particles {
+      position: absolute;
+      inset: 0;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0;
+      animation: floatParticle var(--dur, 6s) var(--delay, 0s) ease-in-out infinite;
+    }
+
+    @keyframes floatParticle {
+      0% {
+        opacity: 0;
+        transform: translateY(0) scale(0.5);
+      }
+
+      30% {
+        opacity: 0.5;
+      }
+
+      70% {
+        opacity: 0.3;
+      }
+
+      100% {
+        opacity: 0;
+        transform: translateY(-120px) scale(1.2);
+      }
+    }
+
+    /* Floating cricket ball in hero */
+    .hero-ball {
+      position: absolute;
+      right: 8%;
+      top: 20%;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.5) 0%, rgba(245, 197, 24, 0.9) 30%, var(--gold-dark) 70%);
+      box-shadow: 0 0 60px rgba(245, 197, 24, 0.5), 0 0 120px rgba(245, 197, 24, 0.2);
+      animation: heroFloat 4s ease-in-out infinite, heroBallSpin 8s linear infinite;
+      z-index: 2;
+    }
+
+    .hero-ball::before {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border-radius: 50%;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-style: dashed;
+    }
+
+    @keyframes heroFloat {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      50% {
+        transform: translateY(-30px) rotate(15deg);
+      }
+    }
+
+    @keyframes heroBallSpin {
+      from {
+        box-shadow: 0 0 60px rgba(245, 197, 24, 0.5), 0 0 120px rgba(245, 197, 24, 0.2);
+      }
+
+      to {
+        box-shadow: 0 0 80px rgba(245, 197, 24, 0.7), 0 0 160px rgba(245, 197, 24, 0.3);
+      }
+    }
+
+    /* Bat swing animation */
+    .hero-bat {
+      position: absolute;
+      right: 12%;
+      bottom: 5%;
+      font-size: 9rem;
+      opacity: 0.06;
+      animation: batSwing 3s ease-in-out infinite;
+      transform-origin: bottom center;
+      z-index: 1;
+    }
+
+    @keyframes batSwing {
+
+      0%,
+      100% {
+        transform: rotate(-20deg);
+      }
+
+      50% {
+        transform: rotate(20deg);
+      }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      padding: 140px 0 100px;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(245, 197, 24, 0.1);
+      border: 1px solid rgba(245, 197, 24, 0.3);
+      border-radius: 40px;
+      padding: 6px 18px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      animation: fadeInDown 0.8s ease forwards;
+    }
+
+    .hero-eyebrow i {
+      animation: spinBall 2s linear infinite;
+      font-size: 0.7rem;
+    }
+
+    .hero-title {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      animation: fadeInUp 0.9s ease 0.2s both;
+    }
+
+    .hero-title .gold {
+      color: var(--gold);
+    }
+
+    .hero-title .stroke {
+      -webkit-text-stroke: 2px var(--gold);
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      margin: 20px 0 36px;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: var(--gray);
+      font-weight: 400;
+      line-height: 1.7;
+      max-width: 540px;
+      animation: fadeInUp 0.9s ease 0.4s both;
+    }
+
+    .hero-subtitle strong {
+      color: var(--gold);
+    }
+
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeInUp 0.9s ease 0.6s both;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 60px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.9s ease 0.8s both;
+    }
+
+    .hero-stat {
+      text-align: left;
+    }
+
+    .hero-stat .num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-stat .lbl {
+      font-size: 0.8rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hero scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray);
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      z-index: 5;
+      animation: bounce 2s ease infinite;
+    }
+
+    .hero-scroll i {
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(-10px);
+      }
+    }
+
+    /* ============================================================
+       ABOUT SECTION
+    ============================================================ */
+    #about {
+      padding: 110px 0;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about::before {
+      content: '🏏';
+      position: absolute;
+      right: -40px;
+      top: 50%;
+      font-size: 14rem;
+      opacity: 0.025;
+      transform: translateY(-50%) rotate(20deg);
+      pointer-events: none;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .about-feat {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(245, 197, 24, 0.1);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: var(--transition);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .about-feat:hover {
+      background: rgba(245, 197, 24, 0.07);
+      border-color: var(--gold);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .about-feat-icon {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: rgba(245, 197, 24, 0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.1rem;
+    }
+
+    .about-feat h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .about-feat p {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-visual-main {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid rgba(245, 197, 24, 0.2);
+      box-shadow: var(--shadow-card);
+      position: relative;
+    }
+
+    .about-visual-main img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .about-visual-main:hover img {
+      transform: scale(1.04);
+    }
+
+    .about-visual-main .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 27, 42, 0.8) 0%, transparent 50%);
+    }
+
+    .about-badge {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 100px;
+      height: 100px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--navy);
+      font-weight: 800;
+      box-shadow: var(--shadow-gold);
+      animation: rotateBadge 10s linear infinite;
+      font-size: 0.7rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .about-badge .big {
+      font-size: 1.5rem;
+      font-weight: 900;
+    }
+
+    @keyframes rotateBadge {
+      from {
+        transform: rotate(0);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* ============================================================
+       PATRON SECTION
+    ============================================================ */
+    #patron {
+      padding: 110px 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(245, 197, 24, 0.05) 0%, transparent 70%), var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .patron-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    /* Slider */
+    .patron-slider-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 2px solid rgba(245, 197, 24, 0.25);
+      box-shadow: 0 0 80px rgba(245, 197, 24, 0.12), var(--shadow-card);
+    }
+
+    .patron-slides-track {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .patron-slide {
+      min-width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .patron-slide img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .patron-slide:hover img {
+      transform: scale(1.04);
+    }
+
+    .patron-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 27, 42, 0.92) 0%, rgba(13, 27, 42, 0.4) 50%, transparent 100%);
+    }
+
+    .patron-slide-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 40px;
+    }
+
+    .patron-slide-info h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .patron-slide-info p {
+      color: var(--off-white);
+      font-size: 1.05rem;
+      margin-top: 4px;
+    }
+
+    .patron-slide-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 40px;
+      margin-bottom: 12px;
+    }
+
+    /* Prev/next */
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(245, 197, 24, 0.9);
+      color: var(--navy);
+      border: none;
+      cursor: pointer;
+      z-index: 5;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .slider-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .slider-prev {
+      left: 16px;
+    }
+
+    .slider-next {
+      right: 16px;
+    }
+
+    /* Dots */
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(245, 197, 24, 0.3);
+      border: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .slider-dot.active {
+      background: var(--gold);
+      width: 30px;
+      border-radius: 5px;
+    }
+
+    /* Patron stats */
+    .patron-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 50px;
+    }
+
+    .pstat {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(245, 197, 24, 0.1);
+      border-radius: var(--radius);
+      padding: 28px 20px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .pstat:hover {
+      border-color: var(--gold);
+      background: rgba(245, 197, 24, 0.07);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .pstat .num {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .pstat .lbl {
+      font-size: 0.8rem;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       TEAM SECTION
+    ============================================================ */
+    #team {
+      padding: 110px 0;
+      background: var(--navy-mid);
+    }
+
+    .team-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .team-photo-wrap {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid rgba(245, 197, 24, 0.2);
+      box-shadow: var(--shadow-card);
+    }
+
+    .team-photo-wrap img {
+      width: 100%;
+      max-height: 560px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+
+    .team-photo-wrap:hover img {
+      transform: scale(1.03);
+    }
+
+    .team-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13, 27, 42, 0.9) 0%, transparent 55%);
+      display: flex;
+      align-items: flex-end;
+      padding: 50px;
+    }
+
+    .team-photo-text h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .team-photo-text p {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       SESSIONS SECTION
+    ============================================================ */
+    #sessions {
+      padding: 110px 0;
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 40%, var(--navy) 100%);
+    }
+
+    .sessions-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .sessions-note {
+      text-align: center;
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .sessions-note span {
+      color: #ff6b6b;
+      font-weight: 700;
+    }
+
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+
+    .session-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(245, 197, 24, 0.12);
+      border-radius: 20px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .session-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    .session-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: var(--shadow-gold), var(--shadow-card);
+      background: rgba(245, 197, 24, 0.05);
+    }
+
+    .session-card.featured {
+      background: linear-gradient(135deg, rgba(245, 197, 24, 0.09) 0%, rgba(245, 197, 24, 0.03) 100%);
+      border-color: var(--gold);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .session-card.featured::after {
+      content: 'POPULAR';
+      position: absolute;
+      top: 16px;
+      right: -28px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 4px 40px;
+      transform: rotate(45deg);
+    }
+
+    .session-icon {
+      width: 56px;
+      height: 56px;
+      background: rgba(245, 197, 24, 0.1);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--gold);
+      transition: var(--transition);
+    }
+
+    .session-card:hover .session-icon {
+      background: var(--gold);
+      color: var(--navy);
+      transform: rotate(-5deg) scale(1.1);
+    }
+
+    .session-card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .session-days {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 12px 0;
+    }
+
+    .day-tag {
+      background: rgba(245, 197, 24, 0.1);
+      color: var(--gold);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    .session-price {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(245, 197, 24, 0.1);
+    }
+
+    .session-price .amount {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .session-price .cur {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--gray);
+    }
+
+    .session-price .desc {
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    /* Advance required banner */
+    .advance-banner {
+      background: linear-gradient(135deg, rgba(245, 197, 24, 0.1) 0%, rgba(245, 197, 24, 0.03) 100%);
+      border: 1px solid var(--gold);
+      border-radius: 16px;
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .advance-banner i {
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    .advance-banner h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .advance-banner p {
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+
+    .advance-banner .amount {
+      margin-left: auto;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       FACILITIES SECTION
+    ============================================================ */
+    #facilities {
+      padding: 110px 0;
+      background: var(--navy-mid);
+    }
+
+    .facilities-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .facilities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .facility-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(245, 197, 24, 0.1);
+      border-radius: 20px;
+      padding: 36px 28px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .facility-card::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(245, 197, 24, 0.08) 0%, transparent 70%);
+      transition: var(--transition);
+    }
+
+    .facility-card:hover::before {
+      transform: scale(2);
+    }
+
+    .facility-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .facility-icon {
+      width: 60px;
+      height: 60px;
+      min-width: 60px;
+      background: rgba(245, 197, 24, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--gold);
+      transition: var(--transition);
+    }
+
+    .facility-card:hover .facility-icon {
+      background: var(--gold);
+      color: var(--navy);
+      transform: rotate(-5deg) scale(1.05);
+    }
+
+    .facility-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .facility-card p {
+      color: var(--gray);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    /* ============================================================
+       GALLERY SECTION
+    ============================================================ */
+    #gallery {
+      padding: 110px 0;
+      background: var(--navy);
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(245, 197, 24, 0.1);
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 3/4;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 27, 42, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .gallery-item .gallery-overlay i {
+      font-size: 2.5rem;
+      color: var(--gold);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.07);
+    }
+
+    .gallery-item:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-gold);
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: rgba(4, 10, 20, 0.95);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #lightbox.open {
+      display: flex;
+    }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 12px;
+      border: 2px solid var(--gold);
+      box-shadow: var(--shadow-gold);
+    }
+
+    #lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 2rem;
+      color: var(--gold);
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ============================================================
+       CONTACT SECTION
+    ============================================================ */
+    #contact {
+      padding: 110px 0;
+      background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%);
+    }
+
+    .contact-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 30px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+
+    .contact-item-icon {
+      width: 48px;
+      height: 48px;
+      min-width: 48px;
+      background: rgba(245, 197, 24, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1.1rem;
+      transition: var(--transition);
+    }
+
+    .contact-item:hover .contact-item-icon {
+      background: var(--gold);
+      color: var(--navy);
+      transform: scale(1.1);
+    }
+
+    .contact-item h4 {
+      font-size: 0.85rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .contact-item p,
+    .contact-item a {
+      color: var(--off-white);
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    .contact-item a:hover {
+      color: var(--gold);
+    }
+
+    .contact-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .social-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      text-decoration: none;
+      transition: var(--transition);
+      border: 2px solid rgba(245, 197, 24, 0.25);
+      color: var(--gold);
+    }
+
+    .social-btn:hover {
+      background: var(--gold);
+      color: var(--navy);
+      transform: translateY(-4px);
+      border-color: var(--gold);
+      box-shadow: var(--shadow-gold);
+    }
+
+    /* Map */
+    .contact-map {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(245, 197, 24, 0.2);
+      box-shadow: var(--shadow-card);
+      margin-top: 28px;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 240px;
+      display: block;
+      border: none;
+      filter: invert(90%) hue-rotate(180deg);
+    }
+
+    /* Booking Form */
+    .booking-form-wrap {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(245, 197, 24, 0.15);
+      border-radius: 24px;
+      padding: 40px 36px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .booking-form-wrap h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .booking-form-wrap p {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 30px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--gray);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(245, 197, 24, 0.15);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .form-group select option {
+      background: var(--navy-mid);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(245, 197, 24, 0.1);
+      background: rgba(245, 197, 24, 0.04);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    .form-submit {
+      width: 100%;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    #footer {
+      background: #080f18;
+      border-top: 1px solid rgba(245, 197, 24, 0.1);
+      padding: 70px 0 0;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 50px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand img {
+      height: 70px;
+      width: auto;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .footer-brand p {
+      color: var(--gray);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      max-width: 280px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .footer-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: var(--gold);
+      color: var(--navy);
+      transform: translateY(-3px);
+    }
+
+    .footer-col h4 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .footer-col h4::after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 2px;
+      background: var(--gold);
+      margin-top: 6px;
+      border-radius: 2px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-col ul li a::before {
+      content: '▸';
+      color: var(--gold);
+      font-size: 0.7rem;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold);
+      padding-left: 6px;
+    }
+
+    .footer-col p {
+      color: var(--gray);
+      font-size: 0.85rem;
+      line-height: 1.9;
+    }
+
+    .footer-closed {
+      text-align: center;
+      padding: 14px;
+      background: rgba(255, 107, 107, 0.08);
+      border: 1px solid rgba(255, 107, 107, 0.2);
+      border-radius: 8px;
+      margin-top: 10px;
+      color: #ff6b6b;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      color: var(--gray);
+      font-size: 0.82rem;
+    }
+
+    .footer-bottom span {
+      color: var(--gold);
+    }
+
+    /* ============================================================
+       FLOATING ELEMENTS
+    ============================================================ */
+    /* WhatsApp floating */
+    .float-wa {
+      position: fixed;
+      bottom: 90px;
+      right: 24px;
+      z-index: 800;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      text-decoration: none;
+      box-shadow: 0 6px 30px rgba(37, 211, 102, 0.4);
+      animation: floatBtn 3s ease-in-out infinite;
+      transition: var(--transition);
+    }
+
+    .float-wa:hover {
+      transform: scale(1.12);
+    }
+
+    /* Scroll to top */
+    #scrollTop {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 800;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-gold);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    #scrollTop.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #scrollTop:hover {
+      background: var(--gold-light);
+      transform: translateY(-4px);
+      box-shadow: 0 0 40px rgba(245, 197, 24, 0.6);
+    }
+
+    #scrollTop .ball-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+    }
+
+    @keyframes floatBtn {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    /* ============================================================
+       SECTION DIVIDERS
+    ============================================================ */
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(245, 197, 24, 0.3), transparent);
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (max-width: 1024px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+
+      .patron-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        gap: 50px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+
+      .nav-actions .nav-call,
+      .nav-actions .nav-wa {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .patron-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-ball {
+        width: 110px;
+        height: 110px;
+        right: 4%;
+        top: 15%;
+      }
+
+      .advance-banner {
+        flex-direction: column;
+      }
+
+      .advance-banner .amount {
+        margin-left: 0;
+      }
+
+      .booking-form-wrap {
+        padding: 28px 20px;
+      }
+
+      .patron-slide img {
+        height: 380px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .patron-stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-stats {
+        gap: 24px;
+      }
+
+      .nav-actions {
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============================================================ -->
+  <!-- LOADING SCREEN -->
+  <!-- ============================================================ -->
+  <div id="loader">
+    <div class="loader-ball"></div>
+    <div class="loader-text">A. MDCA — LOADING</div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- NAVBAR -->
+  <!-- ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-logo">
+        <img src="images/logo-transparent.png" alt="A. Modern Day Cricket Academy Logo" id="navLogoImg" />
+        <div class="nav-logo-text">
+          <span class="top">A. Modern Day</span>
+          <span class="bot">Cricket Academy</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#patron">Patron in Chief</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#sessions">Sessions</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="tel:+923004973340" class="nav-call btn" id="navCallBtn">
+          <i class="fas fa-phone"></i> Call Now
+        </a>
+        <a href="https://wa.me/923214983884" target="_blank" class="nav-wa btn" id="navWaBtn">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="https://www.instagram.com/a.modern_day_cricket_academy?igsh=MTY2dzRxcHIxbTg0eQ" target="_blank" class="social-btn nav-social" id="navInstaBtn"
+          aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1CtxMSr4Ae/" target="_blank" class="social-btn nav-social" id="navFbBtn"
+          aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=A.mdca.gh@gmail.com&su=Inquiry%20about%20A.MDCA%20Academy&body=Hi!%0A%0AI%20want%20to%20learn%20about%20A.MDCA%20Academy." target="_blank" class="social-btn nav-social" id="navGmailBtn"
+          aria-label="Gmail">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="mobile-nav-link">🏠 Home</a>
+      <a href="#about" class="mobile-nav-link">📋 About Academy</a>
+      <a href="#patron" class="mobile-nav-link">⭐ Patron in Chief</a>
+      <a href="#team" class="mobile-nav-link">👥 Our Team</a>
+      <a href="#sessions" class="mobile-nav-link">🏏 Sessions</a>
+      <a href="#facilities" class="mobile-nav-link">🏟️ Facilities</a>
+      <a href="#gallery" class="mobile-nav-link">📸 Gallery</a>
+      <a href="#contact" class="mobile-nav-link">📞 Contact</a>
+      <div class="mob-actions">
+        <a href="tel:+923004973340" class="btn btn-gold" style="flex:1;">
+          <i class="fas fa-phone"></i> Call
+        </a>
+        <a href="https://wa.me/923214983884" target="_blank" class="btn btn-green" style="flex:1;">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- HERO SECTION -->
+  <!-- ============================================================ -->
+  <section id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-field"></div>
+
+    <!-- Animated particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Floating cricket ball -->
+    <div class="hero-ball" aria-hidden="true"></div>
+    <!-- Bat silhouette -->
+    <div class="hero-bat" aria-hidden="true">🏏</div>
+
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <i class="fas fa-circle"></i>
+          Karachi's Premier Cricket Academy
+        </div>
+
+        <h1 class="hero-title">
+          <span class="stroke">A.MDCA</span> <span class="gold">Teams</span><br />
+          & Emerging Talent
+        </h1>
+
+        <p class="hero-subtitle">
+          <strong>Promoting Young Guns and Talent</strong> | Practice Nets |
+          Indoor Tape Ball · Join the most elite environment for budding cricketers in Karachi.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-gold" id="heroJoinBtn">
+            <i class="fas fa-cricket-bat-ball"></i> Join Now
+          </a>
+          <a href="#sessions" class="btn btn-outline" id="heroBookBtn">
+            <i class="fas fa-calendar-alt"></i> Book Session
+          </a>
+          <a href="https://wa.me/923214983884?text=I want to join A. Modern Day Cricket Academy" target="_blank"
+            class="btn btn-green" id="heroWaBtn">
+            <i class="fab fa-whatsapp"></i> WhatsApp
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num" data-count="500">0</div>
+            <div class="lbl">Students Trained</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-count="6">0</div>
+            <div class="lbl">Days a Week</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-count="3">0</div>
+            <div class="lbl">Session Types</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num" data-count="2">0</div>
+            <div class="lbl">Years of Excellence</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll Down</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- ABOUT SECTION -->
+  <!-- ============================================================ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <!-- Text -->
+        <div>
+          <div class="section-tag reveal">About The Academy</div>
+          <h2 class="section-title reveal">Pakistan's Rising<br /><span>Cricket Powerhouse</span></h2>
+          <p class="section-desc reveal" style="margin-top:16px;">
+            A. Modern Day Cricket Academy is dedicated to developing the next generation of cricket stars.
+            Located in Gulshan-e-Hadeed, Karachi, we provide world-class training facilities, professional coaches,
+            and structured programs for players of all skill levels — from beginners to advanced.
+          </p>
+
+          <div class="about-features">
+            <div class="about-feat reveal">
+              <div class="about-feat-icon"><i class="fas fa-network-wired"></i></div>
+              <div>
+                <h4>Practice Nets</h4>
+                <p>State-of-the-art batting & bowling nets</p>
+              </div>
+            </div>
+            <div class="about-feat reveal">
+              <div class="about-feat-icon"><i class="fas fa-house"></i></div>
+              <div>
+                <h4>Indoor Tape Ball</h4>
+                <p>Sheltered indoor facility</p>
+              </div>
+            </div>
+            <div class="about-feat reveal">
+              <div class="about-feat-icon"><i class="fas fa-lightbulb"></i></div>
+              <div>
+                <h4>Day-Night Lights</h4>
+                <p>High-power floodlights for night sessions</p>
+              </div>
+            </div>
+            <div class="about-feat reveal">
+              <div class="about-feat-icon"><i class="fas fa-sun"></i></div>
+              <div>
+                <h4>Morning & Evening</h4>
+                <p>Flexible session timing</p>
+              </div>
+            </div>
+            <div class="about-feat reveal">
+              <div class="about-feat-icon"><i class="fas fa-trophy"></i></div>
+              <div>
+                <h4>Match Practice</h4>
+                <p>Real match simulations weekly</p>
+              </div>
+            </div>
+            <div class="about-feat reveal">
+              <div class="about-feat-icon"><i class="fas fa-user-graduate"></i></div>
+              <div>
+                <h4>Pro Coaching</h4>
+                <p>Certified &amp; experienced coaches</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual -->
+        <div class="about-visual reveal-right">
+          <div class="about-visual-main">
+            <img src="images/team.jpg" alt="A. Modern Day Cricket Academy Team" />
+            <div class="overlay"></div>
+          </div>
+          <div class="about-badge">
+            <span class="big">#1</span>
+            <span>Karachi<br />Academy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- PATRON IN CHIEF SECTION -->
+  <!-- ============================================================ -->
+  <section id="patron">
+    <div class="container">
+      <div class="patron-header">
+        <div class="section-tag reveal">Patron in Chief</div>
+        <h2 class="section-title reveal">
+          <span>Younis Khan</span> — Patron in Chief
+        </h2>
+        <p class="section-desc reveal" style="margin: 14px auto 0; text-align:center;">
+          Pakistan's greatest Test batsman and World Cup winner backing this academy,
+          bringing his unmatched experience to our students.
+        </p>
+      </div>
+
+      <!-- Slider -->
+      <div class="patron-slider-wrap reveal">
+        <div class="patron-slides-track" id="patronTrack">
+
+          <!-- Slide 1 -->
+          <div class="patron-slide">
+            <img src="images/younis1.jpg" alt="Younis Khan celebrating century" />
+            <div class="patron-slide-overlay"></div>
+            <div class="patron-slide-info">
+              <div class="patron-slide-badge">Patron in Chief</div>
+              <h3>Younis Khan</h3>
+              <p>Pakistan's All-Time Leading Run Scorer in Test Cricket</p>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="patron-slide">
+            <img src="images/younis2.jpg" alt="Younis Khan batting in green jersey" />
+            <div class="patron-slide-overlay"></div>
+            <div class="patron-slide-info">
+              <div class="patron-slide-badge">World Cup Champion</div>
+              <h3>Younis Khan</h3>
+              <p>ICC World Twenty20 2009 Champion — Inspiring the next generation</p>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="patron-slide">
+            <img src="images/younis3.jpg" alt="Younis Khan in white test kit" />
+            <div class="patron-slide-overlay"></div>
+            <div class="patron-slide-info">
+              <div class="patron-slide-badge">10,000+ Test Runs</div>
+              <h3>Younis Khan</h3>
+              <p>34 Test Centuries — A Legend Mentoring Future Champions</p>
+            </div>
+          </div>
+
+        </div>
+
+        <button class="slider-btn slider-prev" id="patronPrev" aria-label="Previous slide">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="slider-btn slider-next" id="patronNext" aria-label="Next slide">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Dots -->
+      <div class="slider-dots" id="sliderDots">
+        <button class="slider-dot active" data-idx="0" aria-label="Slide 1"></button>
+        <button class="slider-dot" data-idx="1" aria-label="Slide 2"></button>
+        <button class="slider-dot" data-idx="2" aria-label="Slide 3"></button>
+      </div>
+
+      <!-- Patron Stats -->
+      <div class="patron-stats">
+        <div class="pstat reveal">
+          <div class="num">10,099</div>
+          <div class="lbl">Test Runs</div>
+        </div>
+        <div class="pstat reveal">
+          <div class="num">34</div>
+          <div class="lbl">Test Centuries</div>
+        </div>
+        <div class="pstat reveal">
+          <div class="num">118</div>
+          <div class="lbl">Test Matches</div>
+        </div>
+        <div class="pstat reveal">
+          <div class="num">2009</div>
+          <div class="lbl">World Cup Champion</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- OUR TEAM SECTION -->
+  <!-- ============================================================ -->
+  <section id="team">
+    <div class="container">
+      <div class="team-header">
+        <div class="section-tag reveal">Our Squad</div>
+        <h2 class="section-title reveal">
+          A. Modern Day <span>Cricket Academy Team</span>
+        </h2>
+        <p class="section-desc reveal" style="margin: 14px auto 0; text-align:center;">
+          A brotherhood of passionate cricketers training together to become tomorrow's champions.
+        </p>
+      </div>
+
+      <div class="team-photo-wrap reveal">
+        <img src="images/team.jpg" alt="A. Modern Day Cricket Academy Team Photo" />
+        <div class="team-photo-overlay">
+          <div class="team-photo-text">
+            <h3>Our Academy Family</h3>
+            <p>Dedicated. Disciplined. Destined for Greatness.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- SESSIONS SECTION -->
+  <!-- ============================================================ -->
+  <section id="sessions">
+    <div class="container">
+      <div class="sessions-header">
+        <div class="section-tag reveal">Session Plans</div>
+        <h2 class="section-title reveal">Choose Your <span>Training Session</span></h2>
+      </div>
+      <p class="sessions-note reveal">
+        <i class="fas fa-ban" style="color:#ff6b6b;"></i>
+        <span>Monday Closed</span> · Indoor Tape Ball Bookings Available
+      </p>
+
+      <div class="sessions-grid">
+
+        <!-- Morning -->
+        <div class="session-card reveal">
+          <div class="session-icon"><i class="fas fa-sun"></i></div>
+          <h3>Morning Session</h3>
+          <p style="color:var(--gray);font-size:0.88rem;margin-bottom:10px;">
+            Start your day with professional training. Build fundamentals and fitness every morning.
+          </p>
+          <div class="session-days">
+            <span class="day-tag">Tue</span>
+            <span class="day-tag">Wed</span>
+            <span class="day-tag">Thu</span>
+            <span class="day-tag">Fri</span>
+            <span class="day-tag">Sat</span>
+            <span class="day-tag">Sun</span>
+          </div>
+          <div class="session-price">
+            <span class="amount">Available</span>
+            <div class="desc">Contact for timing & fee</div>
+          </div>
+          <a href="https://wa.me/923214983884?text=I'm interested in Morning Session booking" target="_blank"
+            class="btn btn-gold" style="width:100%; margin-top:20px;">
+            <i class="fas fa-calendar-check"></i> Book Session
+          </a>
+        </div>
+
+        <!-- Evening G1 -->
+        <div class="session-card reveal">
+          <div class="session-icon"><i class="fas fa-cloud-sun"></i></div>
+          <h3>Evening Group 1</h3>
+          <p style="color:var(--gray);font-size:0.88rem;margin-bottom:10px;">
+            Mid-week evening sessions perfect for school and college students.
+          </p>
+          <div class="session-days">
+            <span class="day-tag">Tuesday</span>
+            <span class="day-tag">Wednesday</span>
+            <span class="day-tag">Thursday</span>
+          </div>
+          <div class="session-price">
+            <span class="amount">3,800</span>
+            <span class="cur"> PKR</span>
+            <div class="desc">Per month</div>
+          </div>
+          <a href="https://wa.me/923214983884?text=I'm interested in Evening Group 1 session booking" target="_blank"
+            class="btn btn-gold" style="width:100%; margin-top:20px;">
+            <i class="fas fa-calendar-check"></i> Book Session
+          </a>
+        </div>
+
+        <!-- Evening G2 -->
+        <div class="session-card featured reveal">
+          <div class="session-icon"><i class="fas fa-moon"></i></div>
+          <h3>Evening Group 2</h3>
+          <p style="color:var(--gray);font-size:0.88rem;margin-bottom:10px;">
+            Weekend evening sessions with intensive batting, bowling &amp; fielding drills.
+          </p>
+          <div class="session-days">
+            <span class="day-tag">Friday</span>
+            <span class="day-tag">Saturday</span>
+            <span class="day-tag">Sunday</span>
+          </div>
+          <div class="session-price">
+            <span class="amount">4,800</span>
+            <span class="cur"> PKR</span>
+            <div class="desc">Per month</div>
+          </div>
+          <a href="https://wa.me/923214983884?text=I'm interested in Evening Group 2 session booking" target="_blank"
+            class="btn btn-gold" style="width:100%; margin-top:20px;">
+            <i class="fas fa-calendar-check"></i> Book Session
+          </a>
+        </div>
+
+        <!-- 6 Days -->
+        <div class="session-card reveal">
+          <div class="session-icon"><i class="fas fa-calendar-week"></i></div>
+          <h3>Full 6 Days Session</h3>
+          <p style="color:var(--gray);font-size:0.88rem;margin-bottom:10px;">
+            Maximum training with 6-day per week access. Best for serious players and future professionals.
+          </p>
+          <div class="session-days">
+            <span class="day-tag">Tue–Sun</span>
+            <span class="day-tag">All Sessions</span>
+          </div>
+          <div class="session-price">
+            <span class="amount">7,000</span>
+            <span class="cur"> PKR</span>
+            <div class="desc">Per month — Best Value</div>
+          </div>
+          <a href="https://wa.me/923214983884?text=I'm interested in Full 6 Days session booking" target="_blank"
+            class="btn btn-gold" style="width:100%; margin-top:20px;">
+            <i class="fas fa-calendar-check"></i> Book Session
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Advance required -->
+      <div class="advance-banner reveal">
+        <i class="fas fa-coins"></i>
+        <div>
+          <h4>Advance Required for Booking</h4>
+          <p>A refundable advance secures your slot. Contact us via WhatsApp to register.</p>
+        </div>
+        <div class="amount">3,000 <span style="font-size:1rem;font-weight:600;color:var(--gray);">PKR</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- FACILITIES SECTION -->
+  <!-- ============================================================ -->
+  <section id="facilities">
+    <div class="container">
+      <div class="facilities-header">
+        <div class="section-tag reveal">World-Class</div>
+        <h2 class="section-title reveal">Our <span>Facilities</span></h2>
+        <p class="section-desc reveal" style="margin: 14px auto 0; text-align:center;">
+          Everything a cricketer needs to grow their game — all under one roof.
+        </p>
+      </div>
+
+      <div class="facilities-grid">
+
+        <div class="facility-card reveal">
+          <div class="facility-icon"><i class="fas fa-network-wired"></i></div>
+          <div>
+            <h3>Practice Nets</h3>
+            <p>Professional-grade batting and bowling nets for focused skill development with coaches supervising every
+              session.</p>
+          </div>
+        </div>
+
+        <div class="facility-card reveal">
+          <div class="facility-icon"><i class="fas fa-house"></i></div>
+          <div>
+            <h3>Indoor Tape Ball</h3>
+            <p>Sheltered indoor facility available for tape ball cricket training and private bookings year-round.</p>
+          </div>
+        </div>
+
+        <div class="facility-card reveal">
+          <div class="facility-icon"><i class="fas fa-lightbulb"></i></div>
+          <div>
+            <h3>Day-Night Lights</h3>
+            <p>High-powered floodlights enabling sessions into the evening, simulating real match conditions after dark.
+            </p>
+          </div>
+        </div>
+
+        <div class="facility-card reveal">
+          <div class="facility-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <div>
+            <h3>Professional Coaching</h3>
+            <p>Certified, experienced coaches who tailor training to individual players — from grip to game strategy.
+            </p>
+          </div>
+        </div>
+
+        <div class="facility-card reveal">
+          <div class="facility-icon"><i class="fas fa-trophy"></i></div>
+          <div>
+            <h3>Match Practice</h3>
+            <p>Weekly internal matches and scrimmages to develop match temperament, pressure handling and teamwork.</p>
+          </div>
+        </div>
+
+        <div class="facility-card reveal">
+          <div class="facility-icon"><i class="fas fa-layer-group"></i></div>
+          <div>
+            <h3>All Levels Welcome</h3>
+            <p>Structured programs from beginner fundamentals right up to advanced competitive-level training.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- GALLERY SECTION -->
+  <!-- ============================================================ -->
+  <section id="gallery">
+    <div class="container">
+      <div class="gallery-header">
+        <div class="section-tag reveal">Academy in Action</div>
+        <h2 class="section-title reveal">Our <span>Gallery</span></h2>
+        <p class="section-desc reveal" style="margin: 14px auto 0; text-align:center;">
+          Moments captured from training, matches and academy life.
+        </p>
+      </div>
+
+      <div class="gallery-grid reveal">
+
+        <div class="gallery-item" data-img="images/new 1.jpg" id="gal1">
+          <img src="images/new 1.jpg" alt="Emerging Talent 1" style="object-position: top;" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-img="images/new 2.jpg" id="gal2">
+          <img src="images/new 2.jpg" alt="Emerging Talent 2" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-img="images/talent2.jpg" id="gal3">
+          <img src="images/talent2.jpg" alt="Emerging Talent 3" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-img="images/talent 5.jpg" id="gal4">
+          <img src="images/talent 5.jpg" alt="Emerging Talent 4" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-img="images/team.jpg" id="gal5">
+          <img src="images/team.jpg" alt="Academy Team Photo" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-img="images/younis1.jpg" id="gal6">
+          <img src="images/younis1.jpg" alt="Younis Khan with Students" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-img="images/younis2.jpg" id="gal7">
+          <img src="images/younis2.jpg" alt="Training Session" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+        <div class="gallery-item" data-img="images/younis3.jpg" id="gal8">
+          <img src="images/younis3.jpg" alt="Academy Life" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button id="lightbox-close" aria-label="Close lightbox">&times;</button>
+    <img id="lightboxImg" src="" alt="Gallery image preview" />
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ============================================================ -->
+  <!-- CONTACT SECTION -->
+  <!-- ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <div class="contact-header">
+        <div class="section-tag reveal">Get In Touch</div>
+        <h2 class="section-title reveal">
+          Contact <span>&amp; Booking</span>
+        </h2>
+        <p class="section-desc reveal" style="margin:14px auto 0;text-align:center;">
+          Ready to start your cricket journey? Reach out and we'll get you registered.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Left: Info -->
+        <div class="reveal-left">
+          <div class="contact-info">
+            <h3>Get In Touch</h3>
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+923004973340">0300 4973340</a><br />
+                <a href="tel:+923214983884">0321 4983884</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <h4>WhatsApp</h4>
+                <a href="https://wa.me/923214983884" target="_blank">+92 321 4983884</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h4>Email</h4>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=A.mdca.gh@gmail.com&su=Inquiry%20about%20A.MDCA%20Academy&body=Hi!%0A%0AI%20want%20to%20learn%20about%20A.MDCA%20Academy." target="_blank">A.mdca.gh@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-location-dot"></i></div>
+              <div>
+                <h4>Address</h4>
+                <p>Kashana Marriage Lawns,<br />
+                  Gulshan-e-Hadeed Phase I,<br />
+                  Bin Qasim Town, Karachi — Malir, Sindh, Pakistan</p>
+              </div>
+            </div>
+
+            <div class="contact-socials">
+              <a href="https://www.instagram.com/a.modern_day_cricket_academy?igsh=MTY2dzRxcHIxbTg0eQ" target="_blank" class="social-btn" id="contactInsta"
+                aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://www.facebook.com/share/1CtxMSr4Ae/" target="_blank" class="social-btn" id="contactFb"
+                aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://wa.me/923214983884" target="_blank" class="social-btn" id="contactWa"
+                aria-label="WhatsApp" style="color:#25d366;border-color:rgba(37,211,102,0.3);">
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=A.mdca.gh@gmail.com&su=Inquiry%20about%20A.MDCA%20Academy&body=Hi!%0A%0AI%20want%20to%20learn%20about%20A.MDCA%20Academy." target="_blank" class="social-btn" id="contactGmail"
+                aria-label="Gmail" style="color:#ea4335;border-color:rgba(234,67,53,0.3);">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Embedded Map -->
+          <div class="contact-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.5!2d67.28!3d24.82!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zR3Vsc2hhbi1lLUhhZGVlZA!5e0!3m2!1sen!2spk!4v1"
+              title="Gulshan-e-Hadeed, Bin Qasim Town, Karachi" allowfullscreen loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Right: Booking Form -->
+        <div class="booking-form-wrap reveal-right">
+          <h3>Book a <span style="color:var(--gold);">Session</span></h3>
+          <p>Fill in your details and we'll confirm your slot within 24 hours.</p>
+
+          <form id="bookingForm" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Full Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Your full name" required />
+              </div>
+              <div class="form-group">
+                <label for="fphone">Phone Number</label>
+                <input type="tel" id="fphone" name="fphone" placeholder="03xx xxxxxxx" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="fsession">Select Session</label>
+              <select id="fsession" name="fsession" required>
+                <option value="" disabled selected>Choose a session…</option>
+                <option value="morning">Morning Session</option>
+                <option value="evening-g1">Evening Group 1 (Tue/Wed/Thu) — 3,800 PKR</option>
+                <option value="evening-g2">Evening Group 2 (Fri/Sat/Sun) — 4,800 PKR</option>
+                <option value="6days">Full 6 Days Session — 7,000 PKR</option>
+                <option value="indoor">Indoor Tape Ball Booking</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="fmessage">Message (Optional)</label>
+              <textarea id="fmessage" name="fmessage" placeholder="Any questions or special requirements…"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold form-submit" id="formSubmitBtn">
+              <i class="fas fa-paper-plane"></i> Submit Booking Request
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <img src="images/logo-transparent.png" alt="A. Modern Day Cricket Academy" />
+          <p>
+            A. Modern Day Cricket Academy — Developing future cricket stars in Karachi.
+            Professional coaching, modern facilities, and a passion for the game.
+          </p>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/a.modern_day_cricket_academy?igsh=MTY2dzRxcHIxbTg0eQ" target="_blank" aria-label="Instagram"><i
+                class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1CtxMSr4Ae/" target="_blank" aria-label="Facebook"><i
+                class="fab fa-facebook-f"></i></a>
+            <a href="https://wa.me/923214983884" target="_blank" aria-label="WhatsApp"><i
+                class="fab fa-whatsapp"></i></a>
+            <a href="tel:+923004973340" aria-label="Call"><i class="fas fa-phone"></i></a>
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=A.mdca.gh@gmail.com&su=Inquiry%20about%20A.MDCA%20Academy&body=Hi!%0A%0AI%20want%20to%20learn%20about%20A.MDCA%20Academy." target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Academy</a></li>
+            <li><a href="#patron">Patron in Chief</a></li>
+            <li><a href="#team">Our Team</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Sessions -->
+        <div class="footer-col">
+          <h4>Sessions</h4>
+          <ul>
+            <li><a href="#sessions">Morning Session</a></li>
+            <li><a href="#sessions">Evening G1 — 3,800 PKR</a></li>
+            <li><a href="#sessions">Evening G2 — 4,800 PKR</a></li>
+            <li><a href="#sessions">6 Days — 7,000 PKR</a></li>
+            <li><a href="#sessions">Indoor Tape Ball Booking</a></li>
+          </ul>
+          <div class="footer-closed">
+            <i class="fas fa-ban"></i> Monday — Closed
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <p>
+            📍 Kashana Marriage Lawns,<br />
+            Gulshan-e-Hadeed Phase I,<br />
+            Bin Qasim Town, Karachi<br /><br />
+            📞 <a href="tel:+923004973340" style="color:var(--gray);text-decoration:none;">0300 4973340</a><br />
+            📞 <a href="tel:+923214983884" style="color:var(--gray);text-decoration:none;">0321 4983884</a><br />
+            📧 <a href="mailto:a.mdca.gh@gmail.com"
+              style="color:var(--gray);text-decoration:none;">a.mdca.gh@gmail.com</a>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2025 <span>A. Modern Day Cricket Academy</span>. All Rights Reserved.</p>
+        <p>Designed with <span>♥</span> for Cricket — Karachi, Pakistan</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- FLOATING BUTTONS -->
+  <!-- ============================================================ -->
+  <a href="https://wa.me/923214983884?text=I want to join A. Modern Day Cricket Academy" target="_blank"
+    class="float-wa" id="floatWa" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <button id="scrollTop" aria-label="Scroll to top">
+    <div class="ball-icon"><i class="fas fa-arrow-up"></i></div>
+  </button>
+
+  <!-- ============================================================ -->
+  <!-- JAVASCRIPT -->
+  <!-- ============================================================ -->
+  <script>
+    /* ================================================
+       LOADER
+    ================================================ */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+      }, 1600);
+    });
+
+    /* ================================================
+       GENERATE PARTICLES
+    ================================================ */
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 22; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      const size = Math.random() * 5 + 3;
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random() * 100}%;
+        bottom:${Math.random() * 40}%;
+        --dur:${(Math.random() * 8 + 5)}s;
+        --delay:${(Math.random() * 8)}s;
+      `;
+      particlesContainer.appendChild(p);
+    }
+
+    /* ================================================
+       NAVBAR SCROLL BEHAVIOUR
+    ================================================ */
+    const navbar = document.getElementById('navbar');
+    const scrollTopBtn = document.getElementById('scrollTop');
+
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      navbar.classList.toggle('scrolled', y > 60);
+      scrollTopBtn.classList.toggle('visible', y > 400);
+    });
+
+    /* ================================================
+       HAMBURGER MENU
+    ================================================ */
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      mobileMenu.classList.toggle('open');
+    });
+    // Close on link click
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    /* ================================================
+       SCROLL REVEAL - IntersectionObserver
+    ================================================ */
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          // stagger siblings
+          const siblings = entry.target.parentElement?.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+          if (siblings) {
+            let delay = 0;
+            siblings.forEach((el, i) => {
+              if (el === entry.target) delay = i * 80;
+            });
+            entry.target.style.transitionDelay = delay + 'ms';
+          }
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* ================================================
+       SCROLL TO TOP
+    ================================================ */
+    scrollTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ================================================
+       PATRON IMAGE SLIDER
+    ================================================ */
+    const track = document.getElementById('patronTrack');
+    const dots = document.querySelectorAll('.slider-dot');
+    let current = 0;
+    const total = 3;
+    let autoTimer = null;
+
+    function goToSlide(idx) {
+      current = (idx + total) % total;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document.getElementById('patronPrev').addEventListener('click', () => {
+      goToSlide(current - 1);
+      resetAuto();
+    });
+    document.getElementById('patronNext').addEventListener('click', () => {
+      goToSlide(current + 1);
+      resetAuto();
+    });
+    dots.forEach(d => {
+      d.addEventListener('click', () => {
+        goToSlide(+d.dataset.idx);
+        resetAuto();
+      });
+    });
+
+    function startAuto() {
+      autoTimer = setInterval(() => goToSlide(current + 1), 4000);
+    }
+    function resetAuto() {
+      clearInterval(autoTimer);
+      startAuto();
+    }
+    startAuto();
+
+    // Touch / swipe support
+    let touchStartX = 0;
+    const sliderWrap = document.querySelector('.patron-slider-wrap');
+    sliderWrap.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    sliderWrap.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) {
+        goToSlide(diff > 0 ? current + 1 : current - 1);
+        resetAuto();
+      }
+    });
+
+    /* ================================================
+       GALLERY LIGHTBOX
+    ================================================ */
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lightboxImg');
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        lbImg.src = item.dataset.img;
+        lbImg.alt = item.querySelector('img').alt;
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('lightbox-close').addEventListener('click', closeLB);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLB(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+    function closeLB() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    /* ================================================
+       COUNTER ANIMATION
+    ================================================ */
+    const counters = document.querySelectorAll('[data-count]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = +el.dataset.count;
+          const duration = 1600;
+          const step = target / (duration / 16);
+          let count = 0;
+          const timer = setInterval(() => {
+            count += step;
+            if (count >= target) {
+              el.textContent = target + (target >= 100 ? '+' : '');
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(count) + (target >= 100 ? '+' : '');
+            }
+          }, 16);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    /* ================================================
+       BOOKING FORM SUBMIT
+    ================================================ */
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('fname').value.trim();
+      const phone = document.getElementById('fphone').value.trim();
+      const session = document.getElementById('fsession').value;
+      const msg = document.getElementById('fmessage').value.trim();
+
+      if (!name || !phone || !session) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+
+      const waText = encodeURIComponent(
+        `*New Booking Request - A. MDCA*\n\n` +
+        `👤 Name: ${name}\n` +
+        `📞 Phone: ${phone}\n` +
+        `🏏 Session: ${session}\n` +
+        `💬 Message: ${msg || 'N/A'}`
+      );
+      window.open(`https://wa.me/923214983884?text=${waText}`, '_blank');
+      this.reset();
+    });
+
+    /* ================================================
+       PARALLAX (subtle)
+    ================================================ */
+    const heroBall = document.querySelector('.hero-ball');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      if (heroBall) {
+        heroBall.style.transform = `translateY(${y * 0.15}px)`;
+      }
+    });
+
+    /* ================================================
+       ACTIVE NAV HIGHLIGHT
+    ================================================ */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-menu a, .mobile-menu a');
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY + 100;
+      sections.forEach(sec => {
+        if (scrollY >= sec.offsetTop && scrollY < sec.offsetTop + sec.offsetHeight) {
+          navLinks.forEach(l => {
+            l.style.color = '';
+            if (l.getAttribute('href') === '#' + sec.id) l.style.color = 'var(--gold)';
+          });
+        }
+      });
+    }, { passive: true });
+  </script>
+</body>
+
+</html>
